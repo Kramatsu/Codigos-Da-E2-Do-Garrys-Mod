@@ -1,0 +1,39 @@
+@inputs Sensor Botao
+@outputs Rodas LuzesF:vector LuzesT:vector Freios
+@persist Toggle
+
+runOnKeys(owner(), 1)
+LuzesF = vec(0, 0, 0)
+LuzesT = vec(0, 0, 0)
+Rodas = 0
+Freios = 1
+
+if (owner():keyAttack2())
+{
+    Toggle += 1
+}
+
+if (Botao == 1)
+{
+    Rodas = 1
+    Freios = 0
+}
+
+if (Sensor)
+{
+    Rodas = 0
+    Freios = 5
+    LuzesT = vec(255, 0, 0)
+}
+
+if (Toggle == 1)
+{
+    timer("Pisca", 700)
+    Luz = vec(0, 255, 0)
+    if (clk("Pisca"))
+    {
+        Luz = vec(0, 0, 0)
+        interval(700)
+    }
+}
+

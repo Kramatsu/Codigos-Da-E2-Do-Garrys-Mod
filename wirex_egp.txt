@@ -1,0 +1,152 @@
+@inputs Telad:wirelink Telaf:entity
+@outputs Modo
+@persist Cursor:vector2 A Horas Segundos Minutos Dia:string Mes:string Ano
+
+if(first() / duped())
+{
+    runOnTick(1)
+    Cursor = Telad:egpCursor(Telaf)
+    Horas = time("hour")-3
+    Minutos = time("min")
+    Segundos = time("sec")
+    Ano = time("year")
+    Telad:egpDrawTopLeft(1)
+    
+    function void semana()
+    {
+        
+        if (time("day") == 7)
+        {
+            Dia = "Sabado"
+        }
+        
+        elseif (time("day") == 6)
+        {
+            Dia = "Sexta"
+        }
+        
+        elseif (time("day") == 5)
+        {
+            Dia = "Quinta"
+        }
+        
+        elseif (time("day") == 4)
+        {
+            Dia = "Quarta"
+        }
+        
+        elseif (time("day") == 3)
+        {
+            Dia = "Terca"
+        }
+        
+        elseif (time("day") == 2)
+        {
+            Dia = "Segunda"
+        }
+        
+        elseif (time("day") == 8)
+        {
+            Dia = "Domingo"
+        }
+    }
+    semana()
+    
+    
+    function void meses()
+    {
+        
+        if (time("month") == 1)
+        {
+            Mes = "Janeiro"
+        }
+        
+        elseif (time("month") == 2)
+        {
+            Mes = "Fevereiro"
+        }
+        
+        elseif (time("month") == 3)
+        {
+           Mes = "Marco"
+        }
+        
+        elseif (time("month") == 4)
+        {
+            Mes = "Abril"
+        }
+        
+        elseif (time("month") == 5)
+        {
+            Mes = "Maio"
+        }
+        
+        elseif (time("month") == 6)
+        {
+            Mes = "Junho"
+        }
+        
+        elseif (time("month") == 7)
+        {
+            Mes = "Julho"
+        }
+        
+        elseif (time("month") == 8)
+        {
+            Mes = "Agosto"
+        }
+        
+        elseif (time("month") == 9)
+        {
+            Mes = "Setembro"
+        }
+        
+        elseif (time("month") == 10)
+        {
+            Mes = "Outubro"
+        }
+        
+        elseif (time("month") == 11)
+        {
+            Mes = "Novembro"
+        }
+        
+        elseif (time("month") == 12)
+        {
+            Mes = "Dezembro"
+        }
+    }
+    meses()
+    
+    if (Modo == 0)
+    {
+        Telad:egpText(1, Horas:toString()+":"+Minutos:toString()+":"+Segundos:toString(), vec2(15, 35))
+        Telad:egpText(2, "Menu De Casa", vec2(175, 40))
+        Telad:egpFont(2, "arial", 30)
+        Telad:egpRoundedBox(3, vec2(165, 110), vec2(80, 30))
+        Telad:egpColor(3, vec(72, 72, 72))
+        Telad:egpText(4, "Luzes Ligadas -", vec2(30, 110))
+        Telad:egpColor(4, vec(255, 0, 0))
+        Telad:egpFont(4, "arial", 20)
+        Telad:egpText(5, Dia+" - "+Mes+" - "+Ano:toString(), vec2(15, 10))
+        Telad:egpLine(6, vec2(175, 75), vec2(350, 75))
+        Telad:egpCircle(7, vec2(182, 125), vec2(11.5, 11.5))
+        Telad:egpColor(7, vec(255, 255, 255)) 
+    }
+}
+
+if (inrange(Cursor, Telad:egpPos(3), Telad:egpPos(3) + Telad:egpSize(3)) / inrange(Cursor, Telad:egpPos(7), Telad:egpPos(7) + Telad:egpSize(7)))
+{
+    Modo += 1
+}
+
+if (Modo == 1)
+{
+    Telad:egpCircle(7, vec2(230, 125), vec2(11.5, 11.5))
+    Telad:egpColor(7, vec(0, 200, 0))
+}
+
+if (Modo > 1)
+{
+    Modo = 0
+}

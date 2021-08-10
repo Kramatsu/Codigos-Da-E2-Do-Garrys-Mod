@@ -1,0 +1,29 @@
+@inputs E:wirelink O:entity
+@outputs Cursor:vector2 Modo
+
+if (first() / duped())
+{
+    while (Modo == 0)
+    {
+        runOnKeys(owner(), 1)
+        E:egpClear()
+        Cursor = E:egpCursor(O)
+        E:egpBox(1, vec2(200, 200), vec2(50, 50))
+        E:egpColor(1, vec(255, 0, 0))
+        if(inrange(Cursor, E:egpPos(1), E:egpPos(1) + E:egpSize(1)) && owner():keyUse())
+        {
+            Modo += 1
+            while (Modo == 1)
+            {
+                E:egpColor(1, vec(0, 255, 0))
+            }
+        
+        }
+    }
+    
+    if (Modo >= 2)
+    {
+        Modo = 0
+    }
+}
+        

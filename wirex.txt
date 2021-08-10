@@ -1,0 +1,67 @@
+@inputs Sensor
+@outputs Luz:vector Index 
+@persist Cor
+
+if (first())
+{
+    Index = -1
+    runOnChat(1)
+    print("Ola Kramatsu, serei sua nova assistente por agora em diante!, prazer em conhece-lo!") 
+}
+
+# Gerenciador de eventos
+
+if (owner():lastSaid() == "ola")
+{
+    Index = 0
+    stopAllTimers()
+    if (Index == 0)
+    {
+        print("Ola, como posso lhe ajudar?")
+    }
+}
+   
+if (owner():lastSaid() == "ligar luzes")
+{
+    Index = 1
+    stopAllTimers()
+    if (Index == 1)
+    {             
+        Luz = vec(255, 255, 255)
+    }
+}
+
+if (owner():lastSaid() == "desligar luzes")
+{
+    Index = 2
+    stopAllTimers()
+    if (Index == 2)
+    {             
+        Luz = vec(0, 0, 0)
+    }
+}
+
+if (owner():lastSaid() == "ligar luzes para festa")
+{
+    Index = 3
+    stopAllTimers()
+    if (Index == 3)
+    {             
+        Luz = hsv2rgb(0 + random(50), 0 + random(50), 200 + random(50))
+        interval(700)
+    }
+}
+
+if (owner():lastSaid() == "ligar luzes inteligentes")
+{
+    Index = 4
+    if (Index == 4 && Sensor)
+    {             
+      Luz = vec(255, 255, 255)
+    }
+    
+    else
+    {
+        Luz = vec(0, 0, 0)
+    }
+}

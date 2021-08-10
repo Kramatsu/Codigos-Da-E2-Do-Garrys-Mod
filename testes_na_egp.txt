@@ -1,0 +1,24 @@
+@inputs A:wirelink B:entity
+@outputs Modo:number
+@persist Cursor:vector2
+
+if (first() / duped())
+{
+    Modo = 0
+    Cursor = A:egpCursor(B)
+    A:egpClear()
+    A:egpDrawTopLeft(1)
+    A:egpRoundedBox(1, vec2(150, 150), vec2(80, 30))
+    A:egpColor(1, vec(72, 72, 72))
+    A:egpCircle(2, vec2(165, 165), vec2(10, 10))
+    A:egpColor(2, vec(255, 255, 255))
+    if (inrange(Cursor, A:egpPos(2), A:egpPos(2) + A:egpSize(2)))
+    {
+        Modo += 1
+        if (Modo >= 1)
+        {
+            A:egpCircle(2, vec2(200, 165), vec2(10, 10))
+            A:egpColor(2, vec(0, 255, 0))
+        }
+    }
+}

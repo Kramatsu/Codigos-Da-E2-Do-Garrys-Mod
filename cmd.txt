@@ -1,0 +1,36 @@
+@inputs E:wirelink T:entity Teclado:string EmUso
+@outputs TT:string 
+@persist Arq:string Seta:string Modo Dir:string UserName:string Tecla:string
+
+if (first() / duped())
+{
+    Tecla = "rcontrol"
+    E:egpClear()
+    Seta = ">"
+    runOnKeys(owner(), 1)
+    E:egpDrawTopLeft(1)
+    E:egpBox(1, vec2(0, 0), vec2(1200, 1200))
+    E:egpColor(1, vec(0, 0, 255))
+    E:egpText(2, "Digite o Nome Do Usuario:", vec2(110, 150))
+    E:egpFont(2, "arial", 30) 
+    E:egpText(3, Teclado, vec2(200, 200))
+    E:egpFont(3, "arial", 20)
+}   
+    
+if (Tecla == keyClkPressed() && EmUso == 1)
+{
+    UserName = Teclado
+    Modo = 1
+}
+    
+Dir = "C:/Main/Users/"+UserName+"/ >"
+
+if (Modo == 1)
+{
+    E:egpColor(1, vec(0, 0, 0))
+    E:egpText(2, Dir, vec2(10, 10))
+    E:egpFont(2, "arial", 20)
+    E:egpText(3, Teclado, vec2(195, 10)) 
+}
+
+

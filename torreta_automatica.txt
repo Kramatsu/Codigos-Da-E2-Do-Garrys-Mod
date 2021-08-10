@@ -1,0 +1,18 @@
+@inputs Torreta:entity Sensor AnguloAlvo
+@outputs X Y On
+@persist A B Timer
+
+if (first() / duped())
+{
+On = 0
+X = (sinr(Timer*2))*50
+Y = (cosr(Timer*2))*50
+interval(40)
+Timer += 0.02
+Torreta:setAng(ang(vec(0, X - Y, 0)))
+
+if (Sensor)
+{
+    Torreta:setAng(ang(vec(0, X + Y - AnguloAlvo, 0)))
+}
+}

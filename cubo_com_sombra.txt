@@ -1,0 +1,15 @@
+@persist A
+
+A += sin(12)*5
+
+holoCreate(1)
+holoCreate(2)
+holoPos(1, entity():pos()+vec(0, 0, 50))
+holoPos(2, entity():pos()+vec(0, 0, 50))
+holoScale(2, vec(1.2, 1.2, 1.2))
+holoAlpha(2, 150)
+holoColor(1, vec(255, 0, 0))
+holoColor(2, vec(255, 0, 0))
+holoAng(1, ang(vec(A)))
+holoAng(2, ang(vec(A)))
+interval(1)
