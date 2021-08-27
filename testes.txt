@@ -1,0 +1,5 @@
+@inputs Torreta:entity
+
+Torreta:setPos(findPlayerByName("Guataby"):pos()+vec(45, 0, 0))
+Torreta:setAng(ang(vec(-45, 0, 0)))
+interval(1)

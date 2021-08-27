@@ -1,0 +1,24 @@
+holoCreate(1)
+holoCreate(2)
+holoCreate(3)
+
+holoModel(1, "cplane")
+holoPos(1, entity():pos()+vec(0, 0, 50))
+holoScale(1, vec(1.5, 1.5, 1.5))
+
+holoModel(2, "models/holograms/hq_rcylinder.mdl")
+holoPos(2, entity():pos()+vec(0, 0, 55))
+holoScale(2, vec(1, 1, 1))
+
+holoModel(3, "cplane")
+holoPos(3, entity():pos()+vec(0, 0, 53))
+holoScale(3, vec(1, 1, 1))
+holoAng(3, ang(vec(0, 0, 180)))
+
+holoColor(1, vec(0))
+holoColor(2, vec(0))
+holoColor(3, vec(0))
+
+holoParentAttachment(1, owner(), "hair")
+holoParentAttachment(2, owner(), "hair")
+holoParentAttachment(3, owner(), "hair")

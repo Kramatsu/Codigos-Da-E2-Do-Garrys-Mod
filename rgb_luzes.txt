@@ -1,0 +1,52 @@
+@outputs Luz:vector
+@persist A
+
+timer("++", 500)
+
+Luz = vec(0, 0, 0)
+
+if (clk("++"))
+{
+    A += 1
+}
+
+if (A == 1)
+{
+    Luz = vec(255, 0, 0)
+}
+
+elseif (A == 2)
+{
+    Luz = vec(255, 165, 0)
+}
+
+elseif (A == 3)
+{
+    Luz = vec(255, 255, 0)
+}
+
+elseif (A == 4)
+{
+    Luz = vec(0, 128, 0)
+}
+
+elseif (A == 5)
+{
+    Luz = vec(0, 0, 255)
+}
+
+elseif (A == 6)
+{
+    Luz = vec(75, 0, 130)
+}
+
+elseif (A == 7)
+{
+    Luz = vec(238, 130, 238)
+}
+
+elseif (A >= 8)
+{
+    A = 1
+    Luz = vec(255, 0, 0)
+}

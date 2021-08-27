@@ -1,0 +1,17 @@
+@inputs A:wirelink Velocidade
+@persist D B C
+
+D = 200
+B -= 1
+C = D + B
+
+if (first() / duped())
+{
+    A:egpBox(1, vec2(250, C), vec2(50, 50))
+}
+print(D, B, C)
+if (B == -100)
+{
+    A:egpBox(1, vec2(250, 400), vec2(50, 50))
+}
+interval(20)

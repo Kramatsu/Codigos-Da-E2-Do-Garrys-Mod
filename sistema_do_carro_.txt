@@ -1,10 +1,11 @@
-@inputs Sensor Botao
+@inputs  Carro:entity SensorPedestres SensorMapaAtras SensorMapaFrente SensorMapaEsquerda SensorMapaDireita SensorEstacionamento SensorBotao Botao
 @outputs Rodas LuzesF:vector LuzesT:vector Freios
 @persist Toggle
 
 runOnKeys(owner(), 1)
-LuzesF = vec(0, 0, 0)
-LuzesT = vec(0, 0, 0)
+Horas = time("hour")-3
+LuzesF = vec(0)
+LuzesT = vec(0)
 Rodas = 0
 Freios = 1
 
@@ -19,11 +20,44 @@ if (Botao == 1)
     Freios = 0
 }
 
-if (Sensor)
+if (SensorPedestres)
 {
     Rodas = 0
     Freios = 5
     LuzesT = vec(255, 0, 0)
+}
+
+if (SensorEstacionamento == 1)
+{
+    timer("sensor", 1500)
+    if (clk("sensor"))
+    {
+        print("Cuidado Objeto Proximo Encontrado!")
+        soundPlay(1, 99, "vcmod/clk_els.wav")
+    }
+}
+
+if (owner():lastSaid() == "ligar carro inteligente")
+{
+    if (SensorMapaAtras)
+    {
+        Carro:applyForce(vec(0, 1000, 0))
+    }
+
+    elseif (SensorMapaFrente)
+    {
+        Carro:applyForce(vec(0, -1000, 0))
+    }
+
+    elseif (SensorMapaEsquerda)
+    {
+        Carro:applyForce(vec(5000, 0, 0))
+    }
+
+    elseif (SensorMapaDireita)
+    {
+        Carro:applyForce(vec(-5000, 0, 0))
+    }
 }
 
 if (Toggle == 1)
@@ -37,3 +71,12 @@ if (Toggle == 1)
     }
 }
 
+function void ligarFarol()
+{
+    if (Horas >= 19 || Horas <= 6)
+    {
+        LuzesF = vec(255)
+        LuzesT = vec(255, 0, 0)
+    }
+}
+ligarFarol()

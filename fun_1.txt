@@ -1,0 +1,40 @@
+@inputs Torreta:entity Torreta2:entity Torreta3:entity Escudo:entity Teto:entity 
+@outputs Shot Toggle Toggle2 Rpm Dano Forca Espalhamento
+
+runOnKeys(owner(), 1)
+runOnTick(1)
+Rpm =  99999999
+Espalhamento =  0
+Dano += 999999
+Forca += 9999999
+Torreta:setAng(owner():eyeAngles()+ang(vec(0, 0, 90)))
+Torreta2:setAng(owner():eyeAngles())
+Torreta3:setAng(owner():eyeAngles())
+Torreta:setPos(owner():pos()+vec(0, 0, 120))
+Torreta2:setPos(owner():pos()+vec(-70, 0, 70))
+Torreta3:setPos(owner():pos()+vec(70, 0, 70))
+Escudo:setPos(owner():pos()+vec(0, 0, 5))
+Teto:setPos(owner():pos()+vec(0, 0, 100))
+Escudo:setAng(ang(0))
+Teto:setAng(ang(0))
+
+if (owner():keyAttack2())
+{
+    timer("tiro", 500)
+    if (clk("tiro"))
+    {
+        Toggle += 1
+    }
+}
+
+if (Toggle == 1)
+{
+    Shot = 1
+}
+
+else
+{
+    Toggle = 0
+    Shot = 0
+}
+

@@ -1,0 +1,51 @@
+@inputs Porta:entity Sensor
+@persist A B Press
+
+runOnKeys(entity(), 1)
+Porta:propFreeze(1)
+
+if (Sensor)
+{
+    Press = 1
+}
+
+else 
+{
+    Press = 2
+}
+
+if (Press == 1)
+{
+    A += 1
+    Porta:setAng(ang(vec(A, 0, 0)))
+    timer("fechar", 1000)
+    if (clk("fechar"))
+    {
+        A += 1
+    }
+}
+
+elseif (Press == 2)
+{
+    B += 1
+    Porta:setAng(ang(vec(A - B, 0, 0)))
+}
+
+elseif (Press >= 3)
+{
+    Press = 1
+    A = 0
+    B = 0
+}
+
+if (A >= 90)
+{
+    A = 90
+}
+
+if (B >= 90)
+{
+    B = 90
+}
+
+interval(1)

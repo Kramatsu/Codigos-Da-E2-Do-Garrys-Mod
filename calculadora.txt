@@ -1,0 +1,98 @@
+@name Calculadora
+@inputs A:wirelink B:entity
+@persist Cursor:vector2 C D E F G H I J K L M N O P Q R S T U V W X Y Z
+
+if (first() | duped())
+{
+    A:egpClear()
+    A:egpDrawTopLeft(1)
+    A:egpCursor(B)
+}
+
+print(270+40)
+
+#----------------------------------------------#
+#           PRIMEIRA LINHA                     #
+#----------------------------------------------#
+
+A:egpCircle(1, vec2(150, 150), vec2(15, 15))
+A:egpText(2, "7", vec2(145, 140))
+
+A:egpCircle(3, vec2(190, 150), vec2(15, 15))
+A:egpText(4, "8", vec2(185, 140))
+
+A:egpCircle(5, vec2(230, 150), vec2(15, 15))
+A:egpText(6, "9", vec2(225, 140))
+
+A:egpCircle(7, vec2(270, 150), vec2(15, 15))
+A:egpText(8, "X", vec2(265, 140))
+
+
+#----------------------------------------------#
+#           SEGUNDA LINHA                      #
+#----------------------------------------------#
+
+A:egpCircle(9, vec2(150, 190), vec2(15, 15))
+A:egpText(10, "4", vec2(145, 180))
+
+A:egpCircle(11, vec2(190, 190), vec2(15, 15))
+A:egpText(12, "5", vec2(185, 180))
+
+A:egpCircle(13, vec2(230, 190), vec2(15, 15))
+A:egpText(14, "6", vec2(225, 180))
+
+A:egpCircle(15, vec2(270, 190), vec2(15, 15))
+A:egpText(16, "-", vec2(267, 180))
+
+
+#----------------------------------------------#
+#           TERCEIRA LINHA                     #
+#----------------------------------------------#
+
+A:egpCircle(17, vec2(150, 230), vec2(15, 15))
+A:egpText(18, "1", vec2(145, 220))
+
+A:egpCircle(19, vec2(190, 230), vec2(15, 15))
+A:egpText(20, "2", vec2(185, 220))
+
+A:egpCircle(21, vec2(230, 230), vec2(15, 15))
+A:egpText(22, "3", vec2(225, 220))
+
+A:egpCircle(23, vec2(270, 230), vec2(15, 15))
+A:egpText(24, "+", vec2(265, 220))
+
+
+#----------------------------------------------#
+#           QUARTA LINHA                       #
+#----------------------------------------------#
+
+A:egpCircle(25, vec2(150, 270), vec2(15, 15))
+A:egpText(26, "+/-", vec2(136, 260))
+
+A:egpCircle(27, vec2(190, 270), vec2(15, 15))
+A:egpText(28, "0", vec2(185, 260))
+
+A:egpCircle(29, vec2(230, 270), vec2(15, 15))
+A:egpText(30, ",", vec2(228, 260))
+
+A:egpCircle(31, vec2(270, 270), vec2(15, 15))
+A:egpText(32, "=", vec2(265, 260))
+
+A:egpFont(26, "normal", 17)
+
+A:egpColor(1, vec(72, 72, 72))
+A:egpColor(3, vec(72, 72, 72))
+A:egpColor(5, vec(72, 72, 72))
+A:egpColor(7, vec(72, 72, 72))
+A:egpColor(9, vec(72, 72, 72))
+A:egpColor(11, vec(72, 72, 72))
+A:egpColor(13, vec(72, 72, 72))
+A:egpColor(15, vec(72, 72, 72))
+A:egpColor(17, vec(72, 72, 72))
+A:egpColor(19, vec(72, 72, 72))
+A:egpColor(21, vec(72, 72, 72))
+A:egpColor(23, vec(72, 72, 72))
+A:egpColor(25, vec(72, 72, 72))
+A:egpColor(27, vec(72, 72, 72))
+A:egpColor(29, vec(72, 72, 72))
+A:egpColor(31, vec(72, 72, 72))

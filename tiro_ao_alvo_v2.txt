@@ -1,0 +1,63 @@
+@inputs A:wirelink B:entity
+@persist Cursor:vector2 I Pontos 
+
+if (first() | duped())
+{
+    A:egpClear()
+    A:egpDrawTopLeft(1)
+    Cursor = A:egpCursor(B)
+    Pontos = 0
+}
+
+function void inicio()
+{
+    
+    A:egpCircle(1, vec2(260, 150), vec2(40, 40))
+    A:egpBox(2, vec2(210, 188), vec2(100, 100))
+    
+    
+    A:egpBox(3, vec2(70, 170), vec2(70, 30))
+    A:egpText(4, "Iniciar", vec2(80, 173))
+    
+    A:egpBox(5, vec2(380, 170), vec2(70, 30))
+    A:egpText(6, "Status", vec2(390, 173))
+    
+    A:egpBox(7, vec2(70, 230), vec2(70, 30))
+    A:egpText(8, "Sair", vec2(90, 233))
+    
+    A:egpBox(9, vec2(380, 230), vec2(70, 30))
+    A:egpText(10, "Config", vec2(390, 233))
+    
+    A:egpText(11, "Pontos: "+Pontos, vec2(210, 25))
+    A:egpFont(11, "normal", 25)
+    
+    A:egpColor(3, vec(62, 62, 62))
+    A:egpColor(5, vec(62, 62, 62))
+    A:egpColor(7, vec(62, 62, 62))
+    A:egpColor(9, vec(62, 62, 62))
+    
+} 
+inicio()
+
+
+function void checkClick()
+{
+    if (inrange(Cursor, A:egpPos(4), A:egpPos(4) + A:egpSize(4)) & owner():keyUse())
+    {
+        I = 1
+    }
+}
+checkClick()
+
+if (I == 1)
+{
+    function void selecionar()
+    {
+        A:egpClear()
+        A:egpBox(1, vec2(200, 200), vec2(50, 50))
+        A:egpRoundedBox(2, vec2(200, 200), vec2(50, 20))
+        A:egpText(3, "Dificuldade - ", vec2(200, 200))
+        A:egpColor(1, vec(62, 62, 62))
+    }
+    selecionar()
+}

@@ -1,0 +1,45 @@
+@inputs Sensor:entity
+@outputs Luzes:vector
+@persist Index Segundos
+
+if (owner():lastSaid():lower() == "!iniciar")
+{
+    timer("farol", 1000)
+    if (clk("farol"))
+    {
+        Index += 1
+    }
+    
+    if (Index == 1)
+    {
+        print(1)
+        Luzes = vec(255, 0, 0)
+    }
+    
+    elseif (Index == 2)
+    {
+        print(2)
+        Luzes = vec(255, 255, 0)
+    }
+    
+    elseif (Index == 3)
+    {
+        print(3)
+        Luzes = vec(0, 255, 0)
+        stoptimer("farol")
+        timer("segundos", 100)
+        if (clk("segundos"))
+        {
+            Segundos += 0.1
+        }
+        
+        if (Sensor)
+        {
+            stopAllTimers()
+            print(Sensor:toString() + "ganhou a corrida em "+ Segundos +" segundos!")
+        }
+    }
+    
+}
+
+interval(1)

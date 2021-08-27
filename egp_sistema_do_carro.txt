@@ -1,0 +1,57 @@
+@inputs A:wirelink B:entity
+@persist Cursor:vector2 Horas Minutos Segundos StringHoras:string StringMinutos:string StringSegundos:string
+
+runOnTick(1)
+
+if (first() || duped())
+{
+    A:egpDrawTopLeft(1)
+    Cursor = A:egpCursor(B)
+    Horas = time("hour")-3
+    Minutos = time("min")
+    Segundos = time("sec")
+    StringHoras = Horas:toString()
+    StringMinutos = Minutos:toString()
+    StringSegundos = Segundos:toString()
+}
+
+function void tempo()
+{
+    if (Horas <= 9)
+    {
+        StringHoras = "0"+Horas
+    }
+    
+    elseif (Minutos <= 9)
+    {
+        StringMinutos = "0"+Minutos
+    }
+    
+    elseif (Segundos <= 9)
+    {
+        StringSegundos = "0"+Segundos
+    }
+}
+tempo()
+
+A:egpBox(1, vec2(0, 0), vec2(600, 35))
+A:egpColor(1, vec(50))
+
+A:egpBox(2, vec2(0, 34), vec2(600, 500))
+A:egpColor(2, vec(0))
+
+A:egpText(3, StringHoras+":"+StringMinutos+":"+StringSegundos, vec2(10, 8))
+
+A:egpBox(4, vec2(40, 100), vec2(60, 20))
+
+A:egpText(5, "Configs", vec2(42, 100))
+A:egpColor(5, vec(0))
+
+function void checkClicks()
+{
+    if (inrange(Cursor, A:egpPos(4), A:egpPos(4) + A:egpSize(4)))
+    {
+        print(1)
+    }
+}
+checkClicks()

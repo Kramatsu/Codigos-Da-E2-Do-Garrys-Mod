@@ -1,0 +1,12 @@
+@inputs Bomba:entity
+@outputs Explodir
+
+Bomba:setPos(owner():pos())
+
+if (owner():lastSaid() == "alahu akbar")
+{
+    Explodir = 1
+    Explodir = 0
+}
+
+interval(1)

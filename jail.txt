@@ -1,0 +1,42 @@
+@inputs Bomba:entity Escudo:entity Teto:entity Base:entity
+@outputs Explodir
+@persist Index
+
+runOnChat(1)
+
+if (owner():lastSaid() == "explodir")
+{    
+    Index += 1
+    
+    if (Index == 1)
+    {
+        timer("clk", 100)
+        Escudo:setPos(owner():pos()+vec(0, 0, 5))
+        Teto:setPos(owner():pos()+vec(0, 0, 100))
+        Base:setPos(owner():pos())
+        Escudo:setAng(ang(vec(0)))
+        Teto:setAng(ang(vec(0)))
+    }
+    
+    else 
+    {
+        Explodir = 0
+        Index = 0
+        Escudo:propNotSolid(1)
+        Teto:propNotSolid(1)
+        Base:propNotSolid(1)
+    }
+}
+
+if (clk("clk"))
+{
+    Explodir += 1
+}
+
+if (Explodir >= 2)
+{
+    Explodir = 0
+}
+
+Bomba:setPos(owner():pos()+vec(0, 0, 5))
+interval(1)

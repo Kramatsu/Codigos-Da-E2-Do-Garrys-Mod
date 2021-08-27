@@ -1,0 +1,52 @@
+@inputs A:wirelink C:entity EmUso
+@persist B D X Pontos  Toggle 
+
+
+if (first() / duped())
+{
+    A:egpClear()
+    A:egpDrawTopLeft(1)
+    runOnKeys(owner(), 1)
+    EmUso = 1
+    
+    if (EmUso == 1)
+    {
+        B += 5
+        A:egpBox(1, vec2(200, 200), vec2(10, 10))
+        A:egpColor(1, vec(255, 0, 0))
+        A:egpBox(2, vec2(X+B, 200), vec2(40, 15))
+        A:egpColor(2, vec(0, 255, 0))
+        A:egpText(3, "Pontos: "+Pontos:toString(), vec2(200, 100))
+    }
+    
+}
+  
+if (owner():keyForward())
+{
+    Toggle = 1
+}
+
+if (Toggle == 1)
+{
+    A:egpAngle(2, 90)
+    A:egpBox(2, vec2(B-B, 200+B), vec2(40, 15))
+}
+          
+if (B >= 560)
+{
+    B = 0
+    A:egpBox(2, vec2(0+B, 200), vec2(50, 15))
+}
+
+if (inrange(A:egpPos(1), A:egpPos(2), A:egpPos(2) + A:egpSize(2)))
+{
+    timer("pontos", 100)
+    if (clk("pontos"))
+    {
+        D += 5
+        Pontos += 5
+        A:egpBox(2, vec2(0+B, 200), vec2(40+D, 15))
+    }
+}
+
+interval(20)

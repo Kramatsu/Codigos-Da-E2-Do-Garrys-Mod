@@ -1,0 +1,43 @@
+@name "BEMVINDOR"
+@inputs EGP:wirelink
+@persist Horas Min StringHoras:string StringMinutos:string
+
+if (first())
+{
+    EGP:egpClear()
+}
+
+interval(100)
+
+Horas = time("hour")-3
+Min = time("min")
+StringHoras = Horas:toString()
+StringMinutos = Min:toString()
+
+function void tempo()
+{
+    if (Horas <= 9)
+    {
+        StringHoras = "0"+Horas:toString()
+    }
+    
+    elseif (Min <= 9)
+    {
+        StringMinutos = "0"+Min:toString()
+    }
+}
+tempo()
+
+EGP:egpBox(1,vec2(250,250), vec2(550,550))
+EGP:egpColor(1,vec(100,0,0))
+EGP:egpBox(2,vec2(250,70), vec2(550,150))
+EGP:egpColor(2,vec(10,0,0))
+EGP:egpText(3,"SEJA BEM VINDO A BRASILIA.",vec2(10,10))
+EGP:egpText(4,"REGRA:  1  -  NAO FICAR FAZENDO MASS KILL", vec2(10,40))
+EGP:egpText(5,"REGRA:  2  -  NAO FAZER SPAM DE PROP/ENTIDADE ETC...", vec2(10,60))
+EGP:egpText(6,"REGRA:  3  -  NAO SEJA TOXICO", vec2(10,80))
+EGP:egpText(7,"REGRA:  4  -  NAO FAZER PROP KILL", vec2(10,100))
+EGP:egpText(8,"REGRA:  5  -  NAO ABUSAR WIREMOD", vec2(10,120))
+EGP:egpText(9,"PLAYERS: "+numPlayers(),vec2(10,150))
+EGP:egpText(10,"max players: "+maxPlayers(),vec2(10,170))
+EGP:egpText(11,"HORAS: "+StringHoras+":"+StringMinutos,vec2(10, 190))

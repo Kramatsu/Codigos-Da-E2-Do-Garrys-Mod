@@ -1,0 +1,36 @@
+@inputs A:wirelink
+@persist B
+
+if (first() / duped())
+{
+    B += 1
+    A:egpClear()
+    A:egpHudToggle()
+    A:egpRoundedBox(1, vec2(260, 160), vec2(280, 60))
+    A:egpText(2, "Building", vec2(180, 132))
+    A:egpRoundedBoxOutline(3, vec2(260, 160), vec2(280, 60))  
+    A:egpBox(4, vec2(300, 330), vec2(50, 45)) 
+    A:egpBoxOutline(5, vec2(300, 330), vec2(50, 45)) 
+    A:egpBox(6, vec2(250, 258), vec2(120, 25))
+    A:egpBox(7, vec2(200, 310), vec2(120, 25))
+    A:egpBoxOutline(8, vec2(250, 258), vec2(120, 25))
+    A:egpBoxOutline(9, vec2(200, 310), vec2(120, 25))
+    A:egpColor(1, vec(0, 20, 100))
+    A:egpColor(3, vec(0, 0, 0))
+    A:egpColor(4, vec(127, 120, 63))
+    A:egpColor(5, vec(0))
+    A:egpColor(6, vec(20))
+    A:egpColor(7, vec(68, 14, 11))
+    A:egpColor(8, vec(0))
+    A:egpColor(9, vec(0))
+    A:egpSize(2, 50)
+    A:egpSize(3, 3)
+    A:egpSize(5, 1.5)
+    A:egpSize(8, 1.5)
+    A:egpSize(9, 1.5)
+    A:egpAngle(6, -45+B)
+    A:egpAngle(7, -135+B)
+    A:egpAngle(8, -45+B)
+    A:egpAngle(9, -135+B)
+}
+interval(50)

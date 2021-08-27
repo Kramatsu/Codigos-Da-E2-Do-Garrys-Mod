@@ -1,0 +1,79 @@
+#Feito Por Kramatsu 2021
+@name Teste Do Tiro Ao Alvo
+@inputs A:wirelink E:entity 
+@persist Cursor:vector2 Horas Minutos Segundos Pontos Modo
+
+if (first() / duped()){  
+    
+    runOnDmg(1)   
+    runOnTick(1)
+    Cursor = A:egpCursor(E)
+    Horas = time("hour")-3
+    Minutos = time("min")
+    Segundos  = time("sec")  
+    A:egpDrawTopLeft(1)
+    
+    function void menuInicial()
+    {
+        A:egpCircle(1, vec2(260, 150), vec2(40, 40))
+        A:egpBox(2, vec2(200, 190), vec2(120, 120))
+        A:egpText(3, Horas:toString()+":"+Minutos:toString()+":"+Segundos:toString(), vec2(10, 10))
+        A:egpBox(4, vec2(130, 400), vec2(60, 30))
+        A:egpText(5, "Iniciar", vec2(134, 403))
+        A:egpBox(6, vec2(230, 400), vec2(60, 30))
+        A:egpText(7, "Status", vec2(236, 403))
+        A:egpBox(8, vec2(330, 400), vec2(60, 30))
+        A:egpText(9, "Config", vec2(336, 403))
+        A:egpColor(5, vec(0, 0, 0))
+        A:egpColor(7, vec(0, 0, 0))
+        A:egpColor(9, vec(0, 0, 0))
+        A:egpSize(3, 20)
+    }
+    menuInicial()
+    
+    function void click()
+    {
+        if (inrange(Cursor, A:egpPos(4), A:egpPos(4) + A:egpSize(4)))
+        {
+            Modo = 1
+        }
+        
+        elseif (inrange(Cursor, A:egpPos(6), A:egpPos(6) + A:egpSize(6)) / inrange(Cursor, A:egpPos(7), A:egpPos(7) + A:egpSize(7)))
+        {
+            Modo += 3
+        }
+    }
+    click()
+}
+
+function void click()
+{
+    if (inrange(Cursor, A:egpPos(4), A:egpPos(4) + A:egpSize(4)))
+    {
+        Modo = 1
+    }
+        
+    elseif (inrange(Cursor, A:egpPos(6), A:egpPos(6) + A:egpSize(6)) / inrange(Cursor, A:egpPos(7), A:egpPos(7) + A:egpSize(7)))
+    {
+        Modo += 3
+    }
+}
+    click()
+    
+if (Modo == 1)
+{
+    function void modoI()
+    {
+        A:egpBox(1, vec2(160, 80), vec2(200, 300))
+        A:egpText(2, "Dificuldade - ", vec2(165, 100))
+        A:egpRoundedBox(3, vec2(270, 100), vec2(80, 30))
+        A:egpColor(2, vec(0, 0, 0))
+        A:egpColor(3, vec(72, 72, 72))
+        
+    }
+    modoI()
+}
+
+#Feito Por Kramatsu 2021
+#Idealizacao Do Projeto: Kramatsu
+#Script: Kramatsu

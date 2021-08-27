@@ -1,0 +1,21 @@
+@inputs Bomba:entity
+@outputs Explodir
+
+runOnTick(1)
+runOnKeys(owner(), 1)
+
+if (owner():keyAttack2())
+{
+    timer("explodir", 100)
+    Bomba:setPos(owner():aimPos())
+}
+
+if (clk("explodir"))
+{
+    Explodir += 1
+}
+
+if (Explodir >= 2)
+{
+    Explodir = 0
+}

@@ -1,0 +1,25 @@
+@inputs Bomba:entity
+@outputs IO
+
+if (owner():keyAttack2())
+{
+    timer("io", 10)
+    if (clk("io"))
+    {
+        IO += 1
+    }
+    
+    if (IO >= 2)
+    {
+        IO = 0
+    }
+    
+    Bomba:setPos(owner():eye())
+}
+
+else
+{
+    IO = 0
+}
+
+interval(500)

@@ -1,51 +1,51 @@
 @inputs Telad:wirelink Telaf:entity
 @outputs Modo
-@persist Cursor:vector2 A Horas Segundos Minutos Dia:string Mes:string Ano
+@persist Num Cursor:vector2 WeekDay A Horas Segundos Minutos Dia:string Mes:string Ano
 
 if(first() / duped())
 {
-    runOnTick(1)
     Cursor = Telad:egpCursor(Telaf)
     Horas = time("hour")-3
     Minutos = time("min")
     Segundos = time("sec")
+    WeekDay = time("wday")+6
     Ano = time("year")
     Telad:egpDrawTopLeft(1)
     
     function void semana()
     {
         
-        if (time("day") == 7)
+        if (WeekDay == 1)
         {
             Dia = "Sabado"
         }
         
-        elseif (time("day") == 6)
+        elseif (WeekDay == 2)
         {
             Dia = "Sexta"
         }
         
-        elseif (time("day") == 5)
+        elseif (WeekDay == 3)
         {
             Dia = "Quinta"
         }
         
-        elseif (time("day") == 4)
+        elseif (WeekDay == 4)
         {
             Dia = "Quarta"
         }
         
-        elseif (time("day") == 3)
+        elseif (WeekDay == 5)
         {
             Dia = "Terca"
         }
         
-        elseif (time("day") == 2)
+        elseif (WeekDay == 6)
         {
             Dia = "Segunda"
         }
         
-        elseif (time("day") == 8)
+        elseif (WeekDay == 7)
         {
             Dia = "Domingo"
         }
@@ -117,36 +117,31 @@ if(first() / duped())
         }
     }
     meses()
-    
-    if (Modo == 0)
+}
+
+Telad:egpText(1, "Menu", vec2(250, 50))
+Telad:egpText(2, Dia+"|"+Mes+"|"+Ano, vec2(10, 10))
+Telad:egpText(3, Horas:toString()+":"+Minutos:toString()+":"+Segundos:toString(), vec2(10, 35))
+Telad:egpText(4, "Luzes Desligadas -", vec2(30, 100))
+Telad:egpRoundedBox(5, vec2(180, 100), vec2(60, 20))
+Telad:egpColor(5, vec(72, 72, 72))
+Telad:egpCircle(6, vec2(191, 110), vec2(8, 8))
+
+function void checkClick()
+{
+    if (inrange(Cursor, Telad:egpPos(6), Telad:egpPos(6) + Telad:egpSize(6)) & owner():keyUse())
     {
-        Telad:egpText(1, Horas:toString()+":"+Minutos:toString()+":"+Segundos:toString(), vec2(15, 35))
-        Telad:egpText(2, "Menu De Casa", vec2(175, 40))
-        Telad:egpFont(2, "arial", 30)
-        Telad:egpRoundedBox(3, vec2(165, 110), vec2(80, 30))
-        Telad:egpColor(3, vec(72, 72, 72))
-        Telad:egpText(4, "Luzes Ligadas -", vec2(30, 110))
-        Telad:egpColor(4, vec(255, 0, 0))
-        Telad:egpFont(4, "arial", 20)
-        Telad:egpText(5, Dia+" - "+Mes+" - "+Ano:toString(), vec2(15, 10))
-        Telad:egpLine(6, vec2(175, 75), vec2(350, 75))
-        Telad:egpCircle(7, vec2(182, 125), vec2(11.5, 11.5))
-        Telad:egpColor(7, vec(255, 255, 255)) 
+        Num += 1
+        Telad:egpCircle(6, vec2(191+Num, 110), vec2(8, 8))
+        interval(20)
+    }
+    
+    if (Num >= 38)
+    {
+        Num = 0
+        Telad:egpCircle(6, vec2(229, 110), vec2(8, 8))
     }
 }
+checkClick()
 
-if (inrange(Cursor, Telad:egpPos(3), Telad:egpPos(3) + Telad:egpSize(3)) / inrange(Cursor, Telad:egpPos(7), Telad:egpPos(7) + Telad:egpSize(7)))
-{
-    Modo += 1
-}
-
-if (Modo == 1)
-{
-    Telad:egpCircle(7, vec2(230, 125), vec2(11.5, 11.5))
-    Telad:egpColor(7, vec(0, 200, 0))
-}
-
-if (Modo > 1)
-{
-    Modo = 0
-}
+interval(1)
