@@ -13,6 +13,7 @@ holoAng(1, ang(vec(0)))
 holoScale(1, vec(4, 4, 1))
 Banco:setTrails(1, 10, 20, "models/props_combine/tprings_globev", vec(255), 255)
 Banco:setAlpha(0)
+entity():setAlpha(0)
 
 if (Banco:driver())
 {
