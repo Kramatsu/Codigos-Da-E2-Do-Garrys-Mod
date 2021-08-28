@@ -14,31 +14,37 @@ holoScale(1, vec(4, 4, 1))
 Banco:setTrails(1, 10, 20, "models/props_combine/tprings_globev", vec(255), 255)
 Banco:setAlpha(0)
 entity():setAlpha(0)
+applyForce(-entity():vel() / 2)
 
 if (Banco:driver())
 {
     if (owner():keyForward())
     {
-        applyForce(vec(0, 10, 0))
+        applyForce(entity():mass()*15*vec(0, 15, 0))
     }
 
     if (owner():keyBack())
     {
-        applyForce(vec(0, -10, 0))
+        applyForce(entity():mass()*-15*vec(0, 15, 0))
     }
     
     if (owner():keyLeft())
     {
-        applyForce(vec(-10, 0 ,0))
+        applyForce(entity():mass()*-15*vec(15, 0 ,0))
     }
     
     if (owner():keyRight())
     {
-        applyForce(vec(10, 0 ,0))
+        applyForce(entity():mass()*15*vec(15, 0 ,0))
     }
     
     if (owner():keySprint())
     {
-        applyForce(vec(0, 0, 15))
+        applyForce(entity():mass()*10*vec(0, 0, 10))
+    }
+    
+    if (owner():keyAttack2())
+    {
+        applyForce(entity():mass()*-10*vec(0, 0, 10))
     }
 }
